@@ -19,6 +19,7 @@ import {
   shouldAutoDeliverTaskTerminalUpdate,
   shouldSuppressDuplicateTerminalDelivery,
 } from "./task-executor-policy.js";
+import { canCallerAccessOwnedSession } from "./task-owner-access.js";
 import {
   getTaskRegistryHooks,
   getTaskRegistryStore,
@@ -26,7 +27,6 @@ import {
   type TaskRegistryHookEvent,
 } from "./task-registry.store.js";
 import { summarizeTaskRecords } from "./task-registry.summary.js";
-import { canCallerAccessOwnedSession } from "./task-owner-access.js";
 import type {
   TaskDeliveryState,
   TaskDeliveryStatus,

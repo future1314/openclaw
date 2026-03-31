@@ -1,3 +1,6 @@
+import { loadConfig } from "../config/config.js";
+import { info } from "../globals.js";
+import type { RuntimeEnv } from "../runtime.js";
 import {
   getFlowById,
   listFlowRecords,
@@ -6,9 +9,6 @@ import {
 import type { FlowRecord, FlowStatus } from "../tasks/runtime-internal.js";
 import { cancelFlowById, getFlowTaskSummary } from "../tasks/runtime-internal.js";
 import { listTasksForFlowId } from "../tasks/runtime-internal.js";
-import { loadConfig } from "../config/config.js";
-import { info } from "../globals.js";
-import type { RuntimeEnv } from "../runtime.js";
 import { isRich, theme } from "../terminal/theme.js";
 
 const ID_PAD = 10;

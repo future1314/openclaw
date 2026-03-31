@@ -231,7 +231,13 @@ describe("flow-runtime", () => {
         endedAt: 120,
       });
 
-      expect(resumeFlow({ callerSessionKey: "agent:main:main", flowId: flow.flowId, currentStep: "retry_auth" })).toMatchObject({
+      expect(
+        resumeFlow({
+          callerSessionKey: "agent:main:main",
+          flowId: flow.flowId,
+          currentStep: "retry_auth",
+        }),
+      ).toMatchObject({
         flowId: flow.flowId,
         status: "running",
         currentStep: "retry_auth",
@@ -241,7 +247,12 @@ describe("flow-runtime", () => {
       expect(getFlowById(flow.flowId)?.endedAt).toBeUndefined();
 
       expect(
-        finishFlow({ callerSessionKey: "agent:main:main", flowId: flow.flowId, currentStep: "finish", endedAt: 200 }),
+        finishFlow({
+          callerSessionKey: "agent:main:main",
+          flowId: flow.flowId,
+          currentStep: "finish",
+          endedAt: 200,
+        }),
       ).toMatchObject({
         flowId: flow.flowId,
         status: "succeeded",
@@ -253,14 +264,19 @@ describe("flow-runtime", () => {
         ownerSessionKey: "agent:main:main",
         goal: "Failing flow",
       });
-      expect(failFlow({ callerSessionKey: "agent:main:main", flowId: failed.flowId, currentStep: "abort", endedAt: 300 })).toMatchObject(
-        {
+      expect(
+        failFlow({
+          callerSessionKey: "agent:main:main",
           flowId: failed.flowId,
-          status: "failed",
           currentStep: "abort",
           endedAt: 300,
-        },
-      );
+        }),
+      ).toMatchObject({
+        flowId: failed.flowId,
+        status: "failed",
+        currentStep: "abort",
+        endedAt: 300,
+      });
     });
   });
 

@@ -1,10 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { withTempDir } from "../../../src/test-helpers/temp-dir.js";
+import { bindFlowAuthoringHelper, createFlowAuthoringHelper } from "./flow-authoring.js";
 import { getFlowById, resetFlowRegistryForTests } from "./flow-registry.js";
-import {
-  bindFlowAuthoringHelper,
-  createFlowAuthoringHelper,
-} from "./flow-authoring.js";
 import { createQueuedTaskRun } from "./task-executor.js";
 import { listTasksForFlowId, resetTaskRegistryForTests } from "./task-registry.js";
 

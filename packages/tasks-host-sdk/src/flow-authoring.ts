@@ -15,13 +15,19 @@ import { assertCallerAccessOwnedSession } from "./task-owner-access.js";
 
 type CreateFlowParams = Parameters<typeof createFlow>[0];
 type RunTaskInFlowParams = Omit<Parameters<typeof runTaskInFlow>[0], "callerSessionKey" | "flowId">;
-type SetFlowWaitingParams = Omit<Parameters<typeof setFlowWaiting>[0], "callerSessionKey" | "flowId">;
+type SetFlowWaitingParams = Omit<
+  Parameters<typeof setFlowWaiting>[0],
+  "callerSessionKey" | "flowId"
+>;
 type SetFlowOutputParams = Omit<Parameters<typeof setFlowOutput>[0], "callerSessionKey" | "flowId">;
 type AppendFlowOutputParams = Omit<
   Parameters<typeof appendFlowOutput>[0],
   "callerSessionKey" | "flowId"
 >;
-type EmitFlowUpdateParams = Omit<Parameters<typeof emitFlowUpdate>[0], "callerSessionKey" | "flowId">;
+type EmitFlowUpdateParams = Omit<
+  Parameters<typeof emitFlowUpdate>[0],
+  "callerSessionKey" | "flowId"
+>;
 type ResumeFlowParams = Omit<Parameters<typeof resumeFlow>[0], "callerSessionKey" | "flowId">;
 type FinishFlowParams = Omit<Parameters<typeof finishFlow>[0], "callerSessionKey" | "flowId">;
 type FailFlowParams = Omit<Parameters<typeof failFlow>[0], "callerSessionKey" | "flowId">;
@@ -56,7 +62,10 @@ function requireLinearFlow(flowId: string, callerSessionKey: string): FlowRecord
   return flow;
 }
 
-export function bindFlowAuthoringHelper(flowId: string, callerSessionKey: string): FlowAuthoringHelper {
+export function bindFlowAuthoringHelper(
+  flowId: string,
+  callerSessionKey: string,
+): FlowAuthoringHelper {
   requireLinearFlow(flowId, callerSessionKey);
   return {
     flowId,
